@@ -6,12 +6,13 @@ async function getPosts() {
   }
 
   // simulate a delay
-  await new Promise((resolve) => setTimeout(resolve, 2000));
+  await new Promise((resolve) => setTimeout(resolve, 5000));
   return res.json();
 }
 
-export default async function Page() {
+export default async function LoadingUI() {
   const posts = await getPosts();
+
   return (
     <div>
       <h1>Posts</h1>
