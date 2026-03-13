@@ -1,12 +1,7 @@
 async function getWeather() {
-  const res = await fetch(
-    "https://weather-api.free.beeceptor.com/weather",
-    {
-      next: { revalidate: 60 },
-    },
-  );
-
-  console.log("Fetching new weather data at:", new Date().toISOString());
+  const res = await fetch("https://api.open-meteo.com/v1/forecast?latitude=12.97&longitude=77.59&current_weather=true", {
+    next: { revalidate: 60 },
+  });
 
   return res.json();
 }
@@ -14,7 +9,7 @@ async function getWeather() {
 export default async function Page() {
   const { current_weather } = await getWeather();
 
-  const refreshedAt = new Date().toLocaleTimeString();
+  const refreshedAt = new Date().toISOString();
 
   return (
     <div>
@@ -24,6 +19,7 @@ export default async function Page() {
       <h2>Temperature: {current_weather.temperature}°C</h2>
       <p>Wind Speed: {current_weather.windspeed}</p>
       <p>Time: {current_weather.time}</p>
+
       <hr />
 
       <p>
