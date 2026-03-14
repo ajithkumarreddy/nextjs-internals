@@ -23,7 +23,7 @@ export default async function Page() {
       <hr />
 
       <p>
-        <strong>Last refreshed:</strong> {refreshedAt}
+        <strong>Last refreshed at:</strong> {refreshedAt}
       </p>
     </div>
   );
